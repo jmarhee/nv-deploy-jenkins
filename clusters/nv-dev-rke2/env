@@ -10,7 +10,7 @@ KUBECONFIG_CREDENTIAL=nv-dev-rke2
 HELM_CHART_VERSION=latest
 
 # Kubernetes namespace for NeuVector
-NAMESPACE=neuvector
+NAMESPACE=neuvector-system
 
 # Helm release name
 RELEASE_NAME=neuvector
