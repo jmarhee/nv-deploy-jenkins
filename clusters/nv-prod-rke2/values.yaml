@@ -16,7 +16,7 @@ controller:
       Scan_Config:
         Auto_Scan: true
   pvc:
-    enabled: true
+    enabled: false
     storageClass: standard
     capacity: "5Gi"
 
