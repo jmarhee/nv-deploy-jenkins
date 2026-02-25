@@ -1,0 +1,64 @@
+# Base NeuVector Helm values for OpenShift clusters
+# Inherits from common.yaml and adds OpenShift-specific configuration
+
+# OpenShift platform flag
+openshift: true
+
+# Registry configuration (override per cluster as needed)
+registry: registry.neuvector.com
+tag: latest
+
+# Image pull secrets for registry authentication
+imagePullSecrets: nexus-registry-secret
+
+# Controller configuration
+controller:
+  replicas: 3
+  configmap:
+    enabled: false
+  data:
+    sysinitcfg.yaml:
+      New_Service_Profile_Baseline: basic
+      Scan_Config:
+        Auto_Scan: true
+  apisvc:
+    route:
+      enabled: true
+      termination: passthrough
+  federation:
+    managedsvc:
+      route:
+        enabled: true
+        termination: passthrough
+  pvc:
+    enabled: true
+    storageClass: ""
+    capacity: "10Gi"
+
+# Manager configuration with OpenShift routes
+manager:
+  route:
+    enabled: true
+    termination: passthrough
+  svc:
+    type: ClusterIP
+
+# Scanner configuration
+scanner:
+  enabled: true
+  replicas: 2
+
+# CVE updater
+cve:
+  updater:
+    enabled: true
+    schedule: "0 2 * * *"
+
+# Federation service configuration
+federation:
+  managedsvc:
+    type: ClusterIP
+
+# RBAC
+rbac: true
+serviceAccount: neuvector

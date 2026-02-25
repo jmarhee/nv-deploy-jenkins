@@ -1,0 +1,43 @@
+# Common NeuVector Helm values shared across all clusters
+# These values are merged with cluster-specific values
+
+# RBAC and service account
+rbac: true
+serviceAccount: neuvector
+
+# Controller configuration
+controller:
+  replicas: 3
+  configmap:
+    enabled: false
+  data:
+    sysinitcfg.yaml:
+      New_Service_Profile_Baseline: basic
+      Scan_Config:
+        Auto_Scan: true
+  pvc:
+    enabled: true
+    storageClass: ""
+    capacity: "10Gi"
+
+# Enforcer configuration
+enforcer: {}
+
+# Manager configuration
+manager: {}
+
+# Scanner configuration
+scanner:
+  enabled: true
+  replicas: 2
+
+# CVE updater configuration
+cve:
+  updater:
+    enabled: true
+    schedule: "0 2 * * *"
+
+# Federation configuration (endpoints pre-configured for manual setup)
+federation:
+  managedsvc:
+    type: ClusterIP

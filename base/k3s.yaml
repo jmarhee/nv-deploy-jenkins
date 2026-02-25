@@ -1,0 +1,63 @@
+# Base NeuVector Helm values for K3s/RKE2 clusters
+# Inherits from common.yaml and adds K3s-specific configuration
+
+# K3s platform flag
+k3s: true
+
+# Registry configuration (override per cluster as needed)
+registry: registry.neuvector.com
+tag: latest
+
+# Controller configuration
+controller:
+  replicas: 3
+  configmap:
+    enabled: false
+  data:
+    sysinitcfg.yaml:
+      New_Service_Profile_Baseline: basic
+      Scan_Config:
+        Auto_Scan: true
+  apisvc:
+    type: NodePort
+    nodePort: 30444
+  federation:
+    managedsvc:
+      type: NodePort
+      nodePort: 30445
+  # K3s/RKE2 containerd socket path
+  runtimePath: /run/k3s/containerd/containerd.sock
+  pvc:
+    enabled: true
+    storageClass: ""
+    capacity: "10Gi"
+
+# Enforcer configuration with K3s runtime path
+enforcer:
+  runtimePath: /run/k3s/containerd/containerd.sock
+
+# Manager configuration with NodePort for K3s
+manager:
+  svc:
+    type: NodePort
+    nodePort: 30443
+
+# Scanner configuration
+scanner:
+  enabled: true
+  replicas: 2
+
+# CVE updater
+cve:
+  updater:
+    enabled: true
+    schedule: "0 2 * * *"
+
+# Federation service configuration
+federation:
+  managedsvc:
+    type: ClusterIP
+
+# RBAC
+rbac: true
+serviceAccount: neuvector
