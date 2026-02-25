@@ -1,0 +1,55 @@
+# NeuVector Helm values for dev-generic-01 cluster
+# Development Kubernetes cluster for testing and validation
+
+# Registry configuration
+# registry: registry.dev.example.com
+# tag: latest
+
+# Controller configuration - Development capacity
+controller:
+  replicas: 1
+  configmap:
+    enabled: false
+  data:
+    sysinitcfg.yaml:
+      New_Service_Profile_Baseline: basic
+      Scan_Config:
+        Auto_Scan: true
+  pvc:
+    enabled: false
+    storageClass: standard
+    capacity: "5Gi"
+
+# Enforcer configuration
+enforcer: {}
+
+# Manager configuration with ingress
+manager:
+  ingress:
+    enabled: true
+    host: 192.168.0.124.nip.io
+    ingressClassName: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  svc:
+    type: ClusterIP
+
+# Scanner configuration - Minimal for dev
+scanner:
+  enabled: true
+  replicas: 1
+
+# CVE updater - Disabled for dev to reduce resource usage
+cve:
+  updater:
+    enabled: false
+
+# Federation service configuration
+federation:
+  managedsvc:
+    type: ClusterIP
+
+# RBAC
+rbac: true
+serviceAccount: neuvector

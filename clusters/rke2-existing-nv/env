@@ -1,0 +1,19 @@
+# NeuVector Deployment Configuration for dev-generic-01
+#
+# This file is read by the Jenkins pipeline to configure the deployment.
+# Changes to this file or values.yaml will trigger a deployment.
+
+# Jenkins credential ID containing the kubeconfig for this cluster
+KUBECONFIG_CREDENTIAL=rke2-existing-nv
+
+# Helm chart version to deploy (use 'latest' for most recent)
+HELM_CHART_VERSION=latest
+
+# Kubernetes namespace for NeuVector
+NAMESPACE=neuvector-system
+
+# Helm release name
+RELEASE_NAME=neuvector
+
+# Set to 'true' to perform a dry run without making changes
+DRY_RUN=false
