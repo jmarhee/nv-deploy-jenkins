@@ -24,6 +24,7 @@
 // TO DO:
 // * Helm Repo Login
 // * Add Helm Repo Login step to Jenkinsfile
+// * Helm uninstall on failure condition
 
 pipeline {
     agent any // confirm which agent to use for k8s/helm
