@@ -5,18 +5,18 @@
 //
 // CLUSTER DIRECTORY STRUCTURE:
 //   clusters/
-//   ├── prod-openshift-east/
+//   ├── dev-nv-rke2/
 //   │   ├── values.yaml          # Helm values
-//   │   └── env                   # Deployment parameters
-//   ├── prod-openshift-west/
+//   │   └── env                  # Deployment parameters
+//   ├── prod-nv-openshift/
 //   │   ├── values.yaml
 //   │   └── env
-//   └── staging-k3s-01/
+//   └── qa-nv-tanzu-generic/
 //       ├── values.yaml
 //       └── env
 //
 // ENV FILE FORMAT:
-//   KUBECONFIG_CREDENTIAL=prod-openshift-east-kubeconfig
+//   KUBECONFIG_CREDENTIAL=should-match-cluster-dirname-above
 //   HELM_CHART_VERSION=5.3.0
 //   NAMESPACE=neuvector
 //   RELEASE_NAME=neuvector
