@@ -2,8 +2,9 @@
 # Development Kubernetes cluster for testing and validation
 
 # Registry configuration
-# registry: registry.dev.example.com
-# tag: latest
+registry: registry.digitalocean.com
+imagePullSecrets: do-registry-secret
+tag: latest
 
 # Controller configuration - Development capacity
 controller:
