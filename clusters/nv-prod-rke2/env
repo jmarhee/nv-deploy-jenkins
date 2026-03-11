@@ -17,3 +17,4 @@ RELEASE_NAME=neuvector
 
 # Set to 'true' to perform a dry run without making changes
 DRY_RUN=false
+DEBUG=true
