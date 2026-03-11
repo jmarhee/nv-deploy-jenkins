@@ -1,3 +1,31 @@
+//
+// TRIGGER:
+//   Changes to clusters/{cluster-name}/values.yaml or clusters/{cluster-name}/env
+//   on the release branch will trigger a deployment to that cluster.
+//
+// CLUSTER DIRECTORY STRUCTURE:
+//   clusters/
+//   ├── dev-nv-rke2/
+//   │   ├── values.yaml          # Helm values
+//   │   └── env                  # Deployment parameters
+//   ├── prod-nv-openshift/
+//   │   ├── values.yaml
+//   │   └── env
+//   └── qa-nv-tanzu-generic/
+//       ├── values.yaml
+//       └── env
+//
+// ENV FILE FORMAT:
+//   KUBECONFIG_CREDENTIAL=should-match-cluster-dirname-above
+//   HELM_CHART_VERSION=5.3.0
+//   NAMESPACE=neuvector
+//   RELEASE_NAME=neuvector
+//   DEBUG=false # do not use for prod
+//   DRY_RUN=false 
+//
+// TO DO:
+// * Add Helm Repo Login step to Jenkinsfile if req'd for Nexus
+
 pipeline {
     agent any 
 
