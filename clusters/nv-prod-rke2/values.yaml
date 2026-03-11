@@ -3,7 +3,7 @@
 
 # Registry configuration
 # registry: registry.dev.example.com
-tag: latestfdfafs
+tag: latest
 
 # Controller configuration - Development capacity
 controller:
