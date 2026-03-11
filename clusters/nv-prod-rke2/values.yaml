@@ -3,7 +3,7 @@
 
 # Registry configuration
 # registry: registry.dev.example.com
-# tag: latest
+tag: latestfdfafs
 
 # Controller configuration - Development capacity
 controller:
@@ -27,7 +27,7 @@ enforcer: {}
 manager:
   ingress:
     enabled: true
-    host: 192.168.0.116.nip.io
+    host: 192.168.0.109.nip.io
     ingressClassName: nginx
     annotations:
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
